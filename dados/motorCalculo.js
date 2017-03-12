@@ -40,6 +40,7 @@ var calculoBarra = function(montanteInicial,contribuicaoExtra,contribuicaoMensal
     console.log('periodoSaldoSimuladoPorMes-->' + periodoSaldoSimuladoPorMes);
     console.log('montanteProjetado-->' + montanteProjetado);
     console.log('montanteSimulado-->' + montanteSimulado);
+    console.log('contribuicaoMensalAtual-->' + contribuicaoMensalAtual);
 
     for(i = 1; i <= periodoSaldoProjetadoPorMes; i++){
         montanteProjetado = (montanteProjetado *  (1+ (taxaMensal/100)))+ contribuicaoMensalAtual;
