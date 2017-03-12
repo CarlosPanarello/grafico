@@ -4,6 +4,8 @@ const express = require('express');
 const bodyParser = require('body-parser');
 var dados = require('./dados/dadosGraficos.js')
 
+var motor = require('./dados/motorCalculo.js')
+
 const restService = express();
 
 restService.use(bodyParser.json());
@@ -50,15 +52,49 @@ restService.get('/graficoBarraHorizontal', function (req, res) {
     }
 });
 
-restService.get('/calculo', function (req, res) {
-    console.log('calculo');
+restService.get('/calculoBarra', function (req, res) {
+    console.log('calculoBarra');
     var obj = req.query;
+    
     for (var key in obj) {
         if (obj.hasOwnProperty(key)) {
             var val = obj[key];
             console.log(key + '-->' + val);
         }
     }
+    var montanteInicial = req.query.montanteInicial;
+    var contribuicaoExtra = req.query.contribuicaoExtra;
+    var contribuicaoMensal = req.query.contribuicaoMensal;
+    var anoCorrente = 2017;
+    var anoSaidaAtual = req.query.anoSaidaAtual;
+    var anoSaidaNovo = req.query.anoSaidaNovo;
+
+    motor.calcularParaBarra(montanteInicial,contribuicaoExtra,contribuicaoMensal,anoCorrente,anoSaidaAtual,anoSaidaNovo,function(resp){ 
+        res.json(resp);
+    });
+});
+
+restService.get('/calculoLinha', function (req, res) {
+    console.log('calculoLinha');
+    var obj = req.query;
+    
+    for (var key in obj) {
+        if (obj.hasOwnProperty(key)) {
+            var val = obj[key];
+            console.log(key + '-->' + val);
+        }
+    }
+
+    var montanteInicial = req.query.montanteInicial;
+    var contribuicaoExtra = req.query.contribuicaoExtra;
+    var contribuicaoMensal = req.query.contribuicaoMensal;
+    var anoCorrente = 2017;
+    var anoSaidaAtual = req.query.anoSaidaAtual;
+    var anoSaidaNovo = req.query.anoSaidaNovo;
+
+    motor.calcularParaLinha(montanteInicial,contribuicaoExtra,contribuicaoMensal,anoCorrente,anoSaidaAtual,anoSaidaNovo,function(resp){ 
+        res.json(resp);
+    });
 });
 
 restService.get('/graficoPizza', function (req, res) {
