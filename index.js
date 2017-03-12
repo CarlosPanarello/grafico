@@ -52,6 +52,7 @@ restService.get('/graficoBarraHorizontal', function (req, res) {
     }
 });
 
+//https://grafico.herokuapp.com/calculoBarra?montanteInicial=1000.25&contribuicaoExtra=0.50&contribuicaoMensal=100.50&anoSaidaAtual=2047&anoSaidaNovo=2060
 restService.get('/calculoBarra', function (req, res) {
     console.log('calculoBarra');
     var obj = req.query;

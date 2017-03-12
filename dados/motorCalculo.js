@@ -2,7 +2,7 @@
 var taxaMensal = 0.85;
 
 var calculoPizza = function(){
-    
+
 };
 
 var calculoJurosComposto = function(principal,taxa,periodo){
@@ -10,21 +10,19 @@ var calculoJurosComposto = function(principal,taxa,periodo){
     return (principal * Math.pow(1 + taxa, periodo));
 }
 
-var criarItem = function(corItem,corTexto,valorX,valorY){
-    var item = new Object();
-    item.corItem = corItem;
-    item.corTexto = corTexto;
-    item.valorX = valorX;
-    item.valorY = valorY;
+var item = function(corItem,corTexto,valorX,valorY){
+    this.corItem = corItem;
+    this.corTexto = corTexto;
+    this.valorX = valorX;
+    this.valorY = valorY;
 }
 
-var criarConjuntoDado = function(descricao,listaValores){
-    var conjuntoDado = new Object();
-    conjuntoDado.descricaoConjunto = descricao;
-    conjuntoDado.exibirValores = true;
-    conjuntoDado.tamanhoTextoItens = 14.0;
-    conjuntoDado.tipoFormatacao = 'MONETARIO';
-    conjuntoDado.listaValores = listaValores;
+var conjuntoDado = function(descricao,listaValores){
+    this.descricaoConjunto = descricao;
+    this.exibirValores = true;
+    this.tamanhoTextoItens = 14.0;
+    this.tipoFormatacao = 'MONETARIO';
+    this.listaValores = listaValores;
 }
 
 var calculoBarra = function(montanteInicial,contribuicaoExtra,contribuicaoMensalAtual,contribuicaoMensalSimulado,anoCorrente,anoSaidaAtual,anoSaidaSimulado){
@@ -42,17 +40,17 @@ var calculoBarra = function(montanteInicial,contribuicaoExtra,contribuicaoMensal
         montanteSimulado = (montanteSimulado *  (1+ (taxaMensal/100)))+ contribuicaoMensalSimulado;
     }
 
-    var itemProj1 = criarItem(-65536,-16777216,0,0);
-    var itemProj2 = criarItem(-65536,-16777216,0,montanteProjetado);
+    var itemProj1 = new item(-65536,-16777216,0,0);
+    var itemProj2 = new item(-65536,-16777216,0,montanteProjetado);
     var listaValoresProj = [itemProj1, itemProj2];
         
-    var conjuntoProjetado = criarConjuntoDado('Desc Proj',listaValoresProj);
+    var conjuntoProjetado = new conjuntoDado('Desc Proj',listaValoresProj);
     
-    var itemSim1 = criarItem(-16776961,-16777216,1,0);
-    var itemSim2 = criarItem(-16776961,-16777216,1,montanteSimulado);
+    var itemSim1 = new item(-16776961,-16777216,1,0);
+    var itemSim2 = new item(-16776961,-16777216,1,montanteSimulado);
     var listaValoresSim = [itemSim1, itemSim2];
     
-    var conjuntoSimu = criarConjuntoDado('Desc Sim',listaValoresSim);
+    var conjuntoSimu = new conjuntoDado('Desc Sim',listaValoresSim);
 
     var retorno = new Object();
     retorno.conjutoDados = [conjuntoProjetado,conjuntoSimu];
@@ -67,29 +65,29 @@ var calculoLinha = function(montanteInicial,contribuicaoExtra,contribuicaoMensal
     var montanteSimulado = 0 + contribuicaoExtra + montanteInicial;
     
     var listaValoresProj = [];
-    listaValoresProj.push(criarItem(-65536,-16777216,0,0));
+    listaValoresProj.push(new item(-65536,-16777216,0,0));
     
     for(i = 1; i <= periodoSaldoProjetadoPorMes; i++){
         var anual = montanteProjetado;
         for(c = 1; c<=12 ; c++){
             anual = (anual *  (1+ (taxaMensal/100)))+ contribuicaoMensalAtual;
         }
-        listaValoresProj.push(criarItem(-65536,-16777216,i,anual));
+        listaValoresProj.push(new item(-65536,-16777216,i,anual));
         montanteProjetado += anual;
     }
-    var conjuntoProjetado = criarConjuntoDado('Desc Proj',listaValoresProj);
+    var conjuntoProjetado = new conjuntoDado('Desc Proj',listaValoresProj);
 
     var listaValoresSim = [];
-    listaValoresSim.push(criarItem(-16776961,-16777216,0,0));
+    listaValoresSim.push(new item(-16776961,-16777216,0,0));
     for(i = 1; i <= periodoSaldoSimuladoPorMes; i++){
         var anual = montanteSimulado;
         for(c = 1; c<=12 ; c++){
             anual = (anual *  (1+ (taxaMensal/100)))+ contribuicaoMensalSimulado;
         }
-        listaValoresSim.push(criarItem(-16776961,-16777216,i,anual));
+        listaValoresSim.push(new item(-16776961,-16777216,i,anual));
         montanteSimulado += anual;
     }
-    var conjuntoSimu = criarConjuntoDado('Desc Sim',listaValoresSim);
+    var conjuntoSimu = new conjuntoDado('Desc Sim',listaValoresSim);
 
     var retorno = new Object();
     retorno.conjutoDados = [conjuntoProjetado,conjuntoSimu];
@@ -101,6 +99,8 @@ exports.calcularParaLinha = function(montanteInicial,contribuicaoExtra,contribui
 };
 
 exports.calcularParaBarra = function(montanteInicial,contribuicaoExtra,contribuicaoMensal,anoCorrente,anoSaidaAtual,anoSaidaNovo,callback){
+
+
     callback(calculoBarra(montanteInicial,contribuicaoExtra,contribuicaoMensal,anoCorrente,anoSaidaAtual,anoSaidaNovo));
 };
 
