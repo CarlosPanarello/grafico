@@ -52,7 +52,7 @@ restService.get('/graficoBarraHorizontal', function (req, res) {
     }
 });
 
-//https://grafico.herokuapp.com/calculoBarra?montanteInicial=1000.25&contribuicaoExtra=0.50&contribuicaoMensal=100.50&anoSaidaAtual=2047&anoSaidaNovo=2060
+//https://grafico.herokuapp.com/calculoBarra?montanteInicial=1000.25&contribuicaoExtra=0.50&contribuicaoMensalAtual=100.50&contribuicaoMensalSimulado=150&anoSaidaAtual=2047&anoSaidaSimulado=2060
 restService.get('/calculoBarra', function (req, res) {
     console.log('calculoBarra');
     var obj = req.query;
@@ -65,12 +65,13 @@ restService.get('/calculoBarra', function (req, res) {
     }
     var montanteInicial = req.query.montanteInicial;
     var contribuicaoExtra = req.query.contribuicaoExtra;
-    var contribuicaoMensal = req.query.contribuicaoMensal;
+    var contribuicaoMensalAtual = req.query.contribuicaoMensal;
+    var contribuicaoMensalSimulado = req.query.contribuicaoMensalSimulado;
     var anoCorrente = 2017;
     var anoSaidaAtual = req.query.anoSaidaAtual;
-    var anoSaidaNovo = req.query.anoSaidaNovo;
+    var anoSaidaSimulado = req.query.anoSaidaSimulado;
 
-    motor.calcularParaBarra(montanteInicial,contribuicaoExtra,contribuicaoMensal,anoCorrente,anoSaidaAtual,anoSaidaNovo,function(resp){ 
+    motor.calcularParaBarra(montanteInicial,contribuicaoExtra,contribuicaoMensalAtual,contribuicaoMensalSimulado,anoCorrente,anoSaidaAtual,anoSaidaSimulado,function(resp){ 
         res.json(resp);
     });
 });
@@ -88,12 +89,13 @@ restService.get('/calculoLinha', function (req, res) {
 
     var montanteInicial = req.query.montanteInicial;
     var contribuicaoExtra = req.query.contribuicaoExtra;
-    var contribuicaoMensal = req.query.contribuicaoMensal;
+    var contribuicaoMensalAtual = req.query.contribuicaoMensal;
+    var contribuicaoMensalSimulado = req.query.contribuicaoMensalSimulado;
     var anoCorrente = 2017;
     var anoSaidaAtual = req.query.anoSaidaAtual;
-    var anoSaidaNovo = req.query.anoSaidaNovo;
+    var anoSaidaSimulado = req.query.anoSaidaSimulado;
 
-    motor.calcularParaLinha(montanteInicial,contribuicaoExtra,contribuicaoMensal,anoCorrente,anoSaidaAtual,anoSaidaNovo,function(resp){ 
+    motor.calcularParaLinha(montanteInicial,contribuicaoExtra,contribuicaoMensalAtual,contribuicaoMensalSimulado,anoCorrente,anoSaidaAtual,anoSaidaSimulado,function(resp){ 
         res.json(resp);
     });
 });
