@@ -4,6 +4,7 @@
   "description": "devolver os dados para criacao e atualizacao de graficos",
   "main": "index.js",
   "scripts": {
+    "start": "node index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -12,6 +13,11 @@
   },
   "author": "Carlos Panarello",
   "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.15.0",
+    "express": "^4.13.4",
+    "request": "2.79.0"
+  },
   "bugs": {
     "url": "https://github.com/CarlosPanarello/grafico/issues"
   },
