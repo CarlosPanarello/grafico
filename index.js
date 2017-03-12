@@ -52,8 +52,8 @@ restService.get('/graficoBarraHorizontal', function (req, res) {
 
 restService.get('/calculo', function (req, res) {
     console.log('calculo');
-    
-    for (var key in req.query) {
+    var obj = req.query;
+    for (var key in obj) {
         if (obj.hasOwnProperty(key)) {
             var val = obj[key];
             console.log(key + '-->' + val);
