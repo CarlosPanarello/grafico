@@ -1,0 +1,7 @@
+{
+  "name": "grafico",
+  "description": "grafico descricao",
+  "repository": "https://github.com/CarlosPanarello/bot-van-bb",
+  "logo": "https://raw.github.com/PhilJay/MPChart/master/design/feature_graphic.png",
+  "keywords": ["mpandroidchart", "chart"]
+}
