@@ -26,8 +26,13 @@ var calculoBarra = function(montanteInicial,contribuicaoExtra,contribuicaoMensal
     var periodoSaldoProjetadoPorMes = (anoSaidaAtual - anoCorrente) * 12;
     var periodoSaldoSimuladoPorMes = (anoSaidaSimulado - anoCorrente) * 12;
 
-    var montanteProjetado = 0 + montanteInicial;
-    var montanteSimulado = 0 + contribuicaoExtra + montanteInicial;
+    montanteInicial = Number(montanteInicial);
+    contribuicaoExtra = Number(contribuicaoExtra);
+    contribuicaoMensalAtual = Number(contribuicaoMensalAtual);
+    contribuicaoMensalSimulado = Number(contribuicaoMensalSimulado);
+
+    var montanteProjetado = montanteInicial;
+    var montanteSimulado = contribuicaoExtra + montanteInicial;
 
     var taxaMensal = 0.85;
 
@@ -35,7 +40,6 @@ var calculoBarra = function(montanteInicial,contribuicaoExtra,contribuicaoMensal
     console.log('periodoSaldoSimuladoPorMes-->' + periodoSaldoSimuladoPorMes);
     console.log('montanteProjetado-->' + montanteProjetado);
     console.log('montanteSimulado-->' + montanteSimulado);
-
 
     for(i = 1; i <= periodoSaldoProjetadoPorMes; i++){
         montanteProjetado = (montanteProjetado *  (1+ (taxaMensal/100)))+ contribuicaoMensalAtual;
@@ -49,7 +53,7 @@ var calculoBarra = function(montanteInicial,contribuicaoExtra,contribuicaoMensal
     console.log('montanteSimulado-->' + montanteSimulado.toFixed(2) );
 
     var itemProj1 = new item(-65536,-16777216,0,0);
-    var itemProj2 = new item(-65536,-16777216,0,montanteProjetado);
+    var itemProj2 = new item(-65536,-16777216,0,montanteProjetado.toFixed(2));
 
     console.log('itemProj1-->' + itemProj1.toFixed(2) );
     console.log('itemProj2-->' + itemProj2.toFixed(2) );
@@ -59,7 +63,7 @@ var calculoBarra = function(montanteInicial,contribuicaoExtra,contribuicaoMensal
     var conjuntoProjetado = new conjuntoDado('Desc Proj',listaValoresProj);
     
     var itemSim1 = new item(-16776961,-16777216,1,0);
-    var itemSim2 = new item(-16776961,-16777216,1,montanteSimulado);
+    var itemSim2 = new item(-16776961,-16777216,1,montanteSimulado.toFixed(2));
     var listaValoresSim = [itemSim1, itemSim2];
     
     var conjuntoSimu = new conjuntoDado('Desc Sim',listaValoresSim);
