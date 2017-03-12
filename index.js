@@ -65,7 +65,7 @@ restService.get('/calculoBarra', function (req, res) {
     }
     var montanteInicial = req.query.montanteInicial;
     var contribuicaoExtra = req.query.contribuicaoExtra;
-    var contribuicaoMensalAtual = req.query.contribuicaoMensal;
+    var contribuicaoMensalAtual = req.query.contribuicaoMensalAtual;
     var contribuicaoMensalSimulado = req.query.contribuicaoMensalSimulado;
     var anoCorrente = 2017;
     var anoSaidaAtual = req.query.anoSaidaAtual;
