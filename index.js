@@ -27,9 +27,7 @@ restService.get('/graficoBarraVertical', function (req, res) {
     try {
         console.log('req-->' + req);
         console.log('req.body-->' + req.body);
-        console.log('req.body.result-->' + req.body.result);
-        console.log('req.body.result-->' + req.body.result.fulfillment);
-
+        
         dados.barraVertical(function(resp){ 
             res.json(resp);
             //res.send();
