@@ -1,0 +1,19 @@
+{
+  "name": "grafico",
+  "version": "1.0.0",
+  "description": "devolver os dados para criacao e atualizacao de graficos",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CarlosPanarello/grafico.git"
+  },
+  "author": "Carlos Panarello",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/CarlosPanarello/grafico/issues"
+  },
+  "homepage": "https://github.com/CarlosPanarello/grafico#readme"
+}
