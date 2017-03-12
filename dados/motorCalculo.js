@@ -1,6 +1,3 @@
-
-var taxaMensal = 0.85;
-
 var calculoPizza = function(){
 
 };
@@ -32,6 +29,14 @@ var calculoBarra = function(montanteInicial,contribuicaoExtra,contribuicaoMensal
     var montanteProjetado = 0 + montanteInicial;
     var montanteSimulado = 0 + contribuicaoExtra + montanteInicial;
 
+    var taxaMensal = 0.85;
+
+    console.log('periodoSaldoProjetadoPorMes-->' + periodoSaldoProjetadoPorMes);
+    console.log('periodoSaldoSimuladoPorMes-->' + periodoSaldoSimuladoPorMes);
+    console.log('montanteProjetado-->' + montanteProjetado);
+    console.log('montanteSimulado-->' + montanteSimulado);
+
+
     for(i = 1; i <= periodoSaldoProjetadoPorMes; i++){
         montanteProjetado = (montanteProjetado *  (1+ (taxaMensal/100)))+ contribuicaoMensalAtual;
     }
@@ -40,8 +45,15 @@ var calculoBarra = function(montanteInicial,contribuicaoExtra,contribuicaoMensal
         montanteSimulado = (montanteSimulado *  (1+ (taxaMensal/100)))+ contribuicaoMensalSimulado;
     }
 
+    console.log('montanteProjetado-->' + montanteProjetado.toFixed(2) );
+    console.log('montanteSimulado-->' + montanteSimulado.toFixed(2) );
+
     var itemProj1 = new item(-65536,-16777216,0,0);
     var itemProj2 = new item(-65536,-16777216,0,montanteProjetado);
+
+    console.log('itemProj1-->' + itemProj1.toFixed(2) );
+    console.log('itemProj2-->' + itemProj2.toFixed(2) );
+
     var listaValoresProj = [itemProj1, itemProj2];
         
     var conjuntoProjetado = new conjuntoDado('Desc Proj',listaValoresProj);
@@ -60,6 +72,8 @@ var calculoBarra = function(montanteInicial,contribuicaoExtra,contribuicaoMensal
 var calculoLinha = function(montanteInicial,contribuicaoExtra,contribuicaoMensalAtual,contribuicaoMensalSimulado,anoCorrente,anoSaidaAtual,anoSaidaSimulado){
     var periodoSaldoProjetadoPorMes = (anoSaidaAtual - anoCorrente);
     var periodoSaldoSimuladoPorMes = (anoSaidaSimulado - anoCorrente);
+
+    var taxaMensal = 0.85;
 
     var montanteProjetado = 0 + montanteInicial;
     var montanteSimulado = 0 + contribuicaoExtra + montanteInicial;
