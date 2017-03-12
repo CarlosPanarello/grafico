@@ -56,8 +56,8 @@ var calculoBarra = function(montanteInicial,contribuicaoExtra,contribuicaoMensal
     var itemProj1 = new item(-65536,-16777216,0,0);
     var itemProj2 = new item(-65536,-16777216,0,montanteProjetado.toFixed(2));
 
-    console.log('itemProj1-->' + itemProj1.toFixed(2) );
-    console.log('itemProj2-->' + itemProj2.toFixed(2) );
+    console.log('itemProj1-->' + itemProj1 );
+    console.log('itemProj2-->' + itemProj2 );
 
     var listaValoresProj = [itemProj1, itemProj2];
         
