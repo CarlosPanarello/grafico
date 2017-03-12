@@ -57,7 +57,7 @@ var calculoBarra = function(montanteInicial,contribuicaoExtra,contribuicaoMensal
     return retorno;
 }
 
-var calculoLinha = function(montanteInicial,contribuicaoExtra,contribuicaoMensal,anoCorrente,anoSaidaAtual,anoSaidaNovo){
+var calculoLinha = function(montanteInicial,contribuicaoExtra,contribuicaoMensalAtual,contribuicaoMensalSimulado,anoCorrente,anoSaidaAtual,anoSaidaSimulado){
     var periodoSaldoProjetadoPorMes = (anoSaidaAtual - anoCorrente);
     var periodoSaldoSimuladoPorMes = (anoSaidaSimulado - anoCorrente);
 
@@ -94,14 +94,14 @@ var calculoLinha = function(montanteInicial,contribuicaoExtra,contribuicaoMensal
     return retorno;
 }
 
-exports.calcularParaLinha = function(montanteInicial,contribuicaoExtra,contribuicaoMensal,anoCorrente,anoSaidaAtual,anoSaidaNovo,callback){
-    callback(calculoLinha(montanteInicial,contribuicaoExtra,contribuicaoMensal,anoCorrente,anoSaidaAtual,anoSaidaNovo));
+exports.calcularParaLinha = function(montanteInicial,contribuicaoExtra,contribuicaoMensalAtual,contribuicaoMensalSimulado,anoCorrente,anoSaidaAtual,anoSaidaSimulado,callback){
+    callback(calculoLinha(montanteInicial,contribuicaoExtra,contribuicaoMensalAtual,contribuicaoMensalSimulado,anoCorrente,anoSaidaAtual,anoSaidaSimulado));
 };
 
-exports.calcularParaBarra = function(montanteInicial,contribuicaoExtra,contribuicaoMensal,anoCorrente,anoSaidaAtual,anoSaidaNovo,callback){
+exports.calcularParaBarra = function(montanteInicial,contribuicaoExtra,contribuicaoMensalAtual,contribuicaoMensalSimulado,anoCorrente,anoSaidaAtual,anoSaidaSimulado,callback){
 
 
-    callback(calculoBarra(montanteInicial,contribuicaoExtra,contribuicaoMensal,anoCorrente,anoSaidaAtual,anoSaidaNovo));
+    callback(calculoBarra(montanteInicial,contribuicaoExtra,contribuicaoMensalAtual,contribuicaoMensalSimulado,anoCorrente,anoSaidaAtual,anoSaidaSimulado));
 };
 
 exports.calcularParaPizza = function(callback){
