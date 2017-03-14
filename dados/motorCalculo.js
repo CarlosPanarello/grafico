@@ -22,6 +22,28 @@ var conjuntoDado = function(descricao,listaValores){
     this.listaValores = listaValores;
 }
 
+var linhaLimite = function(descricao,valorLimite){
+    this.corLinha = -65536;
+    this.espessuraLinha = 'FINO';
+    this.habilitado = true;
+    this.tipoPontilhado = 'LONGO';
+    this.tipoPosicaoDescricao = 'RIGHT_TOP';
+    this.valorLimite = valorLimite;
+    this.descricao.alinhamento = 'CENTER';
+    this.descricao.cor = -16777216;
+    this.descricao.habilitar = true;
+    this.descricao.posicaoEixoX = 0;
+    this.descricao.posicaoEixoY = 0;
+    this.descricao.tamanhoFonte = 15;
+    this.descricao.texto = descricao;
+
+    this.descricaoConjunto = descricao;
+    this.exibirValores = true;
+    this.tamanhoTextoItens = 14.0;
+    this.tipoFormatacao = 'MONETARIO';
+    this.listaValores = listaValores;
+}
+
 var calculoBarra = function(montanteInicial,contribuicaoExtra,contribuicaoMensalAtual,contribuicaoMensalSimulado,anoCorrente,anoSaidaAtual,anoSaidaSimulado){
     var periodoSaldoProjetadoPorMes = (anoSaidaAtual - anoCorrente) * 12;
     var periodoSaldoSimuladoPorMes = (anoSaidaSimulado - anoCorrente) * 12;
@@ -110,6 +132,7 @@ var calculoLinha = function(montanteInicial,contribuicaoExtra,contribuicaoMensal
 
     var retorno = new Object();
     retorno.conjutoDados = [conjuntoProjetado,conjuntoSimu];
+    retorno.linhasLimites = [];
     return retorno;
 }
 
