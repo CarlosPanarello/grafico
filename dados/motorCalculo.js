@@ -100,11 +100,22 @@ var calculoLinha = function(montanteInicial,contribuicaoExtra,contribuicaoMensal
     var periodoSaldoProjetadoPorMes = (anoSaidaAtual - anoCorrente);
     var periodoSaldoSimuladoPorMes = (anoSaidaSimulado - anoCorrente);
 
+    montanteInicial = Number(montanteInicial);
+    contribuicaoExtra = Number(contribuicaoExtra);
+    contribuicaoMensalAtual = Number(contribuicaoMensalAtual);
+    contribuicaoMensalSimulado = Number(contribuicaoMensalSimulado);
+
+    var montanteProjetado = montanteInicial;
+    var montanteSimulado = contribuicaoExtra + montanteInicial;
+
     var taxaMensal = 0.85;
 
-    var montanteProjetado = 0 + montanteInicial;
-    var montanteSimulado = 0 + contribuicaoExtra + montanteInicial;
-    
+    console.log('periodoSaldoProjetadoPorMes-->' + periodoSaldoProjetadoPorMes);
+    console.log('periodoSaldoSimuladoPorMes-->' + periodoSaldoSimuladoPorMes);
+    console.log('montanteProjetado-->' + montanteProjetado);
+    console.log('montanteSimulado-->' + montanteSimulado);
+    console.log('contribuicaoMensalAtual-->' + contribuicaoMensalAtual);
+
     var listaValoresProj = [];
     listaValoresProj.push(new item(-65536,-16777216,0,0));
     
@@ -132,7 +143,16 @@ var calculoLinha = function(montanteInicial,contribuicaoExtra,contribuicaoMensal
 
     var retorno = new Object();
     retorno.conjutoDados = [conjuntoProjetado,conjuntoSimu];
-    retorno.linhasLimites = [];
+
+    var linhaLimitesSaidaProj = new linhaLimite(anoSaidaAtual+'',listaValoresProj.length);
+    var linhaLimitesSaidaSimulado = new linhaLimite(anoSaidaSimulado+'',listaValoresSim.length);
+    
+    if(listaValoresSim.length > listaValoresProj.length){
+        retorno.linhasLimites = [linhaLimitesSaidaProj,linhaLimitesSaidaSimulado];
+    }else {
+        retorno.linhasLimites = [linhaLimitesSaidaProj];
+    }
+    
     return retorno;
 }
 
