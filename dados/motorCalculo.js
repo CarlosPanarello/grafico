@@ -32,21 +32,14 @@ var descricaoConstrutor = function(descricao){
     this.texto = descricao;
 }
 
-var linhaLimite = function(descricao,valorLimite){
+var linhaLimite = function(desc,valorLimite){
     this.corLinha = -65536;
     this.espessuraLinha = 'FINO';
     this.habilitado = true;
     this.tipoPontilhado = 'LONGO';
     this.tipoPosicaoDescricao = 'RIGHT_TOP';
     this.valorLimite = valorLimite;
-
-    this.descricao = new descricaoConstrutor(descricao);
-
-    this.descricaoConjunto = descricao;
-    this.exibirValores = true;
-    this.tamanhoTextoItens = 14.0;
-    this.tipoFormatacao = 'MONETARIO';
-    this.listaValores = listaValores;
+    this.descricao = new descricaoConstrutor(desc);
 }
 
 var calculoBarra = function(montanteInicial,contribuicaoExtra,contribuicaoMensalAtual,contribuicaoMensalSimulado,anoCorrente,anoSaidaAtual,anoSaidaSimulado){
