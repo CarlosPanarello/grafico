@@ -22,6 +22,16 @@ var conjuntoDado = function(descricao,listaValores){
     this.listaValores = listaValores;
 }
 
+var descricaoConstrutor = function(descricao){
+    this.alinhamento = 'CENTER';
+    this.cor = -16777216;
+    this.habilitar = true;
+    this.posicaoEixoX = 0;
+    this.posicaoEixoY = 0;
+    this.tamanhoFonte = 15;
+    this.texto = descricao;
+}
+
 var linhaLimite = function(descricao,valorLimite){
     this.corLinha = -65536;
     this.espessuraLinha = 'FINO';
@@ -29,13 +39,8 @@ var linhaLimite = function(descricao,valorLimite){
     this.tipoPontilhado = 'LONGO';
     this.tipoPosicaoDescricao = 'RIGHT_TOP';
     this.valorLimite = valorLimite;
-    this.descricao.alinhamento = 'CENTER';
-    this.descricao.cor = -16777216;
-    this.descricao.habilitar = true;
-    this.descricao.posicaoEixoX = 0;
-    this.descricao.posicaoEixoY = 0;
-    this.descricao.tamanhoFonte = 15;
-    this.descricao.texto = descricao;
+
+    this.descricao = new descricaoConstrutor(descricao);
 
     this.descricaoConjunto = descricao;
     this.exibirValores = true;
